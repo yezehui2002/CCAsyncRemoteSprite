@@ -5,6 +5,7 @@ CCAsyncRemoteSprite is a category that adds methods to CCSprite. Images can be d
 ## Installation 
 
 This extension supports installing by CocoaPods. (in-progress)
+
 Checkout Podspecs at [https://github.com/l4u/cocos2d-iphone-podspec](https://github.com/l4u/cocos2d-iphone-podspec)
 
 Alternatively, you can copy the files into your project.
