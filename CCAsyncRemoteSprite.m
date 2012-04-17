@@ -55,9 +55,10 @@
                          placeholderImage:placeholderImage 
                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                       
-                                      CCTexture2D *t = [[CCTextureCache sharedTextureCache] addCGImage:image.CGImage
-                                                                               forKey:[request.URL absoluteString]];
-                                                                            
+                                      CCTexture2D *t = [[CCTextureCache sharedTextureCache] 
+                                                        addCGImage:image.CGImage
+                                                        forKey:[request.URL absoluteString]];
+                                      
                                       CGRect rect = CGRectZero;
                                       rect.size = t.contentSize;
 
