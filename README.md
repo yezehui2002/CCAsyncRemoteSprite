@@ -1,6 +1,6 @@
 # CCAsyncRemoteSprite
 
-CCAsyncRemoteSprite is a category that adds methods to CCSprite. Images can be downloaded asynchronously, and be shown in a CCSprite when downloaded. While the image is being downloaded, an optional placeholder image (UIImage) can be shown.
+CCAsyncRemoteSprite is a category that adds methods to CCSprite. Images can be downloaded asynchronously, and be shown in a CCSprite when downloaded. While the image is being downloaded, an optional placeholder image (CCTexture2D) can be shown.
 
 ## Installation 
 
@@ -18,15 +18,15 @@ Alternatively, you can copy the files into your project.
 ```
 
 ``` objective-c
-    CCSprite *spriteWithPlaceholderImage = [CCSprite 
-                                            spriteWithURL:[NSURL URLWithString:@"http://example.org/image.png"] 
-                                            placeholderImage:[UIImage imageNamed:@"example.png"]];
+    CCSprite *spriteWithplaceholderTexture = [CCSprite 
+                                            spriteWithURL:url
+                                            placeholderTexture:texture];
 ```
 
 ``` objective-c
     CCSprite *spriteWithURLRequest = [CCSprite 
                                       spriteWithURLRequest: urlRequest 
-                                      placeholderImage:image];
+                                      placeholderTexture:texture];
 ```
 
 ## TODO

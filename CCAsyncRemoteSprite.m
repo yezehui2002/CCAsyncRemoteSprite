@@ -32,27 +32,35 @@
 + (id)spriteWithURL:(NSURL *)url
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
-    return [[[self alloc] initwithURLRequest:request placeholderImage:nil] autorelease];  
+    return [[[self alloc] initwithURLRequest:request placeholderTexture:nil] autorelease];  
 }
 
-+ (id)spriteWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholderImage
++ (id)spriteWithURL:(NSURL *)url placeholderTexture:(CCTexture2D *)placeholderTexture
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
-    return [[[self alloc] initwithURLRequest:request placeholderImage:placeholderImage] autorelease];  
+    return [[[self alloc] initwithURLRequest:request placeholderTexture:placeholderTexture] autorelease];  
 }
 
-+ (id)spriteWithURLRequest:(NSURLRequest *)request placeholderImage:(UIImage *)placeholderImage 
++ (id)spriteWithURLRequest:(NSURLRequest *)request placeholderTexture:(CCTexture2D *)placeholderTexture 
 {
-    return [[[self alloc] initwithURLRequest:request placeholderImage:placeholderImage] autorelease];  
+    return [[[self alloc] initwithURLRequest:request placeholderTexture:placeholderTexture] autorelease];  
 }
 
-- (id)initwithURLRequest:(NSURLRequest *)request placeholderImage:(UIImage *)placeholderImage 
+- (id)initwithURLRequest:(NSURLRequest *)request placeholderTexture:(CCTexture2D *)placeholderTexture
 {
     if( (self = [self init]) )
 	{
+        // set texture as placeholderTexture
+        CGRect rect = CGRectZero;
+        rect.size = placeholderTexture.contentSize;
+        [self setTexture:placeholderTexture];
+        [self setTextureRect: rect];
+        
+        // download image or retrieve it from AFNetworking cache
+        // set texture as the downloaded image
         UIImageView *imageView = [[[UIImageView alloc] init] autorelease];
         [imageView setImageWithURLRequest:request
-                         placeholderImage:placeholderImage 
+                         placeholderImage:nil 
                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                       
                                       CCTexture2D *t = [[CCTextureCache sharedTextureCache] 
@@ -61,7 +69,6 @@
                                       
                                       CGRect rect = CGRectZero;
                                       rect.size = t.contentSize;
-
                                       [self setTexture:t];
                                       [self setTextureRect: rect];
                                   } 

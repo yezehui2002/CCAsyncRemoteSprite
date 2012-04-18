@@ -27,12 +27,12 @@
 #import "UIImageView+AFNetworking.h"
 #import "ccMacros.h"
 #import "CCSprite.h"
-
+#import "CCTextureCache.h"
 @interface CCSprite (CCRemoteSprite)
 
 + (id)spriteWithURL:(NSURL *)url;
-+ (id)spriteWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholderImage;
-+ (id)spriteWithURLRequest:(NSURLRequest *)request placeholderImage:(UIImage *)placeholderImage;
-- (id)initwithURLRequest:(NSURLRequest *)request placeholderImage:(UIImage *)placeholderImage;
++ (id)spriteWithURL:(NSURL *)url placeholderTexture:(CCTexture2D *)placeholderTexture;
++ (id)spriteWithURLRequest:(NSURLRequest *)request placeholderTexture:(CCTexture2D *)placeholderTexture;
+- (id)initwithURLRequest:(NSURLRequest *)request placeholderTexture:(CCTexture2D *)placeholderTexture;
 
 @end
