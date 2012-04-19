@@ -29,8 +29,16 @@ Alternatively, you can copy the files into your project.
                                       placeholderTexture:texture];
 ```
 
+## Using CCAsyncSprite with CCMenuItemImage:itemFromNormalSprite or other objects that use CCSprite::contentSize
+
+If you do not use a placeholder texture, you should setContentSize explictly on the CCSprite. 
+Because the content size is unknown until the remote image is downloaded.
+
+If you use a placeholder texture, it should have the same size as that of the remote image.
+
 ## TODO
 
+* retina images
 * better memory management
 
 ## License
